@@ -47,4 +47,6 @@ def MLP(x_train, y_train, x_validation, y_validation, x_test, y_test):
         MLP_pred = best_mlp.predict(x_test)
         MLP_acc = accuracy_score(y_test, MLP_pred)
         
-        return MLP_acc, best_acc, best_mlp, best_activation, best_learning_rate, best_iteractions, best_hidden_layer
+        best_params = {"activation": best_activation, "learning_rate": best_learning_rate, "iteractions": best_iteractions, "hidden_layer": best_hidden_layer}
+        
+        return best_acc, best_mlp, best_params

@@ -5,6 +5,8 @@ from sklearn.metrics import accuracy_score
 # Decision Tree model search
 def DT_model_search(x_train, y_train, x_validation, y_validation):
     
+    higher_acc = -1
+    
     # Test the different models
     for i in ("gini", "entropy"):
         for j in ("best", "random"):
@@ -36,4 +38,6 @@ def DT(x_train, y_train, x_validation, y_validation, x_test, y_test):
     DT_pred = best_model.predict(x_test)
     DT_acc = accuracy_score(y_test, DT_pred)
     
-    return DT_acc, best_model, best_criterion, best_splitter, best_depth, best_leaf
+    best_params = {"criterion": best_criterion, "splitter": best_splitter, "max_depth": best_depth, "min_samples_leaf": best_leaf}
+    
+    return DT_acc, best_model, best_params

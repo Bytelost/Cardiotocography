@@ -10,7 +10,7 @@ def SVM_model_search(x_train, y_train, x_validation, y_validation):
     # Test the different models
     for i in('linear', 'poly', 'rbf', 'sigmoid'):
         for j in (0.1, 1, 10):
-            SVM = SVC(kernel=i, C=j)
+            SVM = SVC(kernel=i, C=j, probability=True)
             SVM.fit(x_train, y_train)
             pred = SVM.predict(x_validation)
             acc = accuracy_score(y_validation, pred)
@@ -34,5 +34,6 @@ def SVM(x_train, y_train, x_validation, y_validation, x_test, y_test):
         # Test the best model
         SVM_pred = best_model.predict(x_test)
         SVM_acc = accuracy_score(y_test, SVM_pred)
+        best_params = {"kernel": best_kernel, "C": best_c}
         
-        return SVM_acc, best_model, best_kernel, best_c
+        return SVM_acc, best_model, best_params
