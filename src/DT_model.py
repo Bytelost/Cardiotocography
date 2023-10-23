@@ -29,7 +29,7 @@ def DT_model_search(x_train, y_train, x_validation, y_validation):
 # Decision Tree model
 def DT(x_train, y_train, x_validation, y_validation, x_test, y_test):
     
-    # Finda the best model and hyperparameters
+    # Finda the best model
     best_model, best_criterion, best_splitter, best_depth, best_leaf = DT_model_search(x_train, y_train, x_validation, y_validation)
     
     # Test the best model
