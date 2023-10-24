@@ -16,10 +16,6 @@ class BordaCountClassifier:
     # Predict the class labels using the Borda Count approach
     def predict(self, X):
         
-        #read feature names from CSV file
-        feature_names = pd.read_csv('CTG.csv', header=None)[0].tolist()
-        X.feature_names = feature_names
-        
         # Get the predicted probabilities for each classifier
         all_probs = [estimator.predict_proba(X) for _, estimator in self.estimators]
         all_probs = np.stack(all_probs)
